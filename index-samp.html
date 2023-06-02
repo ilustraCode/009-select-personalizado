@@ -98,11 +98,11 @@
 		  <input type="text" name="categoria" placeholder="Selecione a categoria" onFocus="dropdown(this, 0)" onBlur="dropdown(this, 1)" />
 		  <div class="dropDown">
 			<div class="listDropDown">
-			  <div class="item" id="item-1" onMouseDown="category(this, 1)">HTML5</div>
-			  <div class="item" id="item-2" onMouseDown="category(this, 2)">CSS3</div>
-			  <div class="item" id="item-3" onMouseDown="category(this, 3)">JavaScript</div>
-			  <div class="item" id="item-4" onMouseDown="category(this, 4)">PHP8</div>
-			  <div class="item" id="item-5" onMouseDown="category(this, 5)">MySQL</div>
+			  <div class="item" id="item-1-1" onMouseDown="category(this, 1, 1)">HTML5</div>
+			  <div class="item" id="item-1-2" onMouseDown="category(this, 1, 2)">CSS3</div>
+			  <div class="item" id="item-1-3" onMouseDown="category(this, 1, 3)">JavaScript</div>
+			  <div class="item" id="item-1-4" onMouseDown="category(this, 1, 4)">PHP8</div>
+			  <div class="item" id="item-1-5" onMouseDown="category(this, 1, 5)">MySQL</div>
 			</div>
 		  </div>
 		</div>
@@ -111,30 +111,33 @@
 		  <input type="text" name="categoria" placeholder="Selecione a categoria" onFocus="dropdown(this, 0)" onBlur="dropdown(this, 1)" />
 		  <div class="dropDown">
 			<div class="listDropDown">
-			  <div class="item" id="item-1" onMouseDown="category(this, 1)">HTML5</div>
-			  <div class="item" id="item-2" onMouseDown="category(this, 2)">CSS3</div>
-			  <div class="item" id="item-3" onMouseDown="category(this, 3)">JavaScript</div>
-			  <div class="item" id="item-4" onMouseDown="category(this, 4)">PHP8</div>
-			  <div class="item" id="item-5" onMouseDown="category(this, 5)">MySQL</div>
+			  <div class="item" id="item-2-1" onMouseDown="category(this, 2, 1)">HTML5</div>
+			  <div class="item" id="item-2-2" onMouseDown="category(this, 2, 2)">CSS3</div>
+			  <div class="item" id="item-2-3" onMouseDown="category(this, 2, 3)">JavaScript</div>
+			  <div class="item" id="item-2-4" onMouseDown="category(this, 2, 4)">PHP8</div>
+			  <div class="item" id="item-2-5" onMouseDown="category(this, 2, 5)">MySQL</div>
 			</div>
 		  </div>
 		</div>
 
 		<script>
-		  function category(element, c) {
+		  function category(element, containerIndex, categoryIndex) {
 			var item = element.innerHTML;
-			element.parentNode.parentNode.getElementsByTagName('input')[0].value = item;
+			var container = element.closest('.container');
+			var input = container.querySelector('input[name="categoria"]');
+			input.value = item;
 		  }
 
 		  function dropdown(element, p) {
-			var e = element.parentNode.getElementsByClassName('dropDown')[0];
+			var container = element.closest('.container');
+			var dropDown = container.querySelector('.dropDown');
 			var d = ['block', 'none'];
-			e.style.display = d[p];
+			dropDown.style.display = d[p];
 
 			var t = ['0px', '0px,-10px'];
 
 			setTimeout(function () {
-			  e.style.transform = 'translate(' + t[p] + ')';
+			  dropDown.style.transform = 'translate(' + t[p] + ')';
 			}, 0);
 		  }
 		</script>
